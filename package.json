@@ -1,0 +1,19 @@
+{
+  "name": "learningtime-hh-sem1-gov-location-service",
+  "version": "1.0.0",
+  "description": "A service in which a user can submit a postcode and receive back the elected representative of the constituency inside the postcode ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alphagov/learningtime-hh-sem1-gov-location-service.git"
+  },
+  "author": "Harley Harris",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alphagov/learningtime-hh-sem1-gov-location-service/issues"
+  },
+  "homepage": "https://github.com/alphagov/learningtime-hh-sem1-gov-location-service#readme"
+}
