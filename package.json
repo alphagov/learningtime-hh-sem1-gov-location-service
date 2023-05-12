@@ -4,7 +4,8 @@
   "description": "A service in which a user can submit a postcode and receive back the elected representative of the constituency inside the postcode ",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc",
+    "start": "node dist/index.js"
   },
   "repository": {
     "type": "git",
