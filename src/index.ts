@@ -1,11 +1,17 @@
 import express, { Express, Request, Response } from 'express';
+import nunjucks from 'nunjucks';
 
 const app: Express = express();
 const port = 8000;
 
+nunjucks.configure('views', {
+	autoescape: true,
+	express: app,
+});
+
 app.get('/', (req: Request, res: Response) => {
 	console.log('Hello, client has sent get request');
-	res.send('Express + TypeScript Server');
+	res.render('index.njk');
 });
 
 app.listen(port, () => {
