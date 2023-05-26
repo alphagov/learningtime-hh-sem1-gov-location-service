@@ -14,6 +14,11 @@ app.get('/', (req: Request, res: Response) => {
 	res.render('index.njk');
 });
 
+app.post('/', (req: Request, res: Response) => {
+	console.log('POST request received from client');
+	res.render('index.njk');
+});
+
 app.listen(port, () => {
 	console.log(`[server]: Server is running at http://localhost:${port}`);
 });
