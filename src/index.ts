@@ -1,6 +1,7 @@
 import express, { Express, Request, Response } from 'express';
 import nunjucks from 'nunjucks';
 import bodyParser from 'body-parser';
+import { PostcodesApiResponse, MembersApiResponse } from '../types';
 
 const app: Express = express();
 const port = 8000;
@@ -18,19 +19,18 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.post('/', async (req: Request, res: Response) => {
-
 	try {
 		const response = await fetch(
 			`https://api.postcodes.io/postcodes/${req.body.postcode}`
 		);
-		const responseJson: any = await response.json();
+		const responseJson: PostcodesApiResponse = await response.json();
 		const parliamentaryConstituency =
 			responseJson.result.parliamentary_constituency;
 
 		const electedRepresentativeRes = await fetch(
 			`https://members-api.parliament.uk/api/Location/Constituency/Search?searchText=${parliamentaryConstituency}&skip=0&take=20`
 		);
-		const electedRepresentativeJson: any =
+		const electedRepresentativeJson: MembersApiResponse =
 			await electedRepresentativeRes.json();
 		const electedRepresentativeName =
 			electedRepresentativeJson.items[0].value.currentRepresentation.member
