@@ -26,10 +26,10 @@ app.post('/', async (req: Request, res: Response) => {
 		res.render('index.njk', {
 			electedRepresentativeName: electedRepresentativeName,
 		});
-	} catch (error: unknown) {
+	} catch (error: any) {
 		console.error(error);
 		res.render('index.njk', {
-			electedRepresentativeName: 'There was an error!',
+			electedRepresentativeName: 'Something really bad went wrong with the server, sorry!',
 		});
 	}
 });
