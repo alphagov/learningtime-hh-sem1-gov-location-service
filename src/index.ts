@@ -1,8 +1,8 @@
 import express, { Express, Request, Response } from 'express';
 import nunjucks from 'nunjucks';
 import bodyParser from 'body-parser';
-import { getConstituency } from './services/constituency.service'
-import { getElectedRepresentative } from './services/electedRepresentative.service'
+import { getConstituency } from './services/constituency.service';
+import { getElectedRepresentative } from './services/electedRepresentative.service';
 
 const app: Express = express();
 const port = 8000;
@@ -22,14 +22,17 @@ app.get('/', (req: Request, res: Response) => {
 app.post('/', async (req: Request, res: Response) => {
 	try {
 		const constituency = await getConstituency(req.body.postcode);
-		const electedRepresentativeName = await getElectedRepresentative(constituency);
+		const electedRepresentativeName = await getElectedRepresentative(
+			constituency
+		);
 		res.render('index.njk', {
 			electedRepresentativeName: electedRepresentativeName,
 		});
 	} catch (error: any) {
 		console.error(error);
 		res.render('index.njk', {
-			electedRepresentativeName: 'Something really bad went wrong with the server, sorry!',
+			electedRepresentativeName:
+				'Something really bad went wrong with the server, sorry!',
 		});
 	}
 });
