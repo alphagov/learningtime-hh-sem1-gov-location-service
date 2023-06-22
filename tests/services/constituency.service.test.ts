@@ -45,7 +45,7 @@ describe('getConstituency test suite', () => {
 		const badPostcode = 'ZYXB 453';
 		const response = await getConstituency(badPostcode);
 
-		expect(response).toBe('No constituency returned');
+		expect(response).toBeUndefined();
 		expect(spyFetchData).toHaveBeenCalledTimes(1);
 
 		expect(consoleErrorMock).toBeCalledTimes(1);
