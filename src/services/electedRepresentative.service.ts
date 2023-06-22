@@ -1,7 +1,9 @@
 import { MembersApiResponse } from '../../types';
 import { fetchData } from '../utils/fetchData';
 
-export async function getElectedRepresentative(constituency: string | undefined) {
+export async function getElectedRepresentative(
+	constituency: string | undefined
+) {
 	if (!constituency) {
 		throw new Error('Postcode was not valid. Please submit a valid postcode');
 	}
