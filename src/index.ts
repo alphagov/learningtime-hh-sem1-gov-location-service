@@ -16,7 +16,7 @@ nunjucks.configure('views', {
 });
 
 app.get('/', (req: Request, res: Response) => {
-	res.render('index.njk', { electedRepresentativeName: '' });
+	res.render('index.njk', { electedRepresentativeName: '', errorMessage: ''});
 });
 
 app.post('/', async (req: Request, res: Response) => {
@@ -26,14 +26,21 @@ app.post('/', async (req: Request, res: Response) => {
 			constituency
 		);
 		res.render('index.njk', {
-			electedRepresentativeName: electedRepresentativeName,
+			electedRepresentativeName: electedRepresentativeName
 		});
 	} catch (error: any) {
 		console.error(error);
-		res.render('index.njk', {
-			electedRepresentativeName:
-				'Something really bad went wrong with the server, sorry!',
+		if (error.message === 'Postcode was not valid. Please submit a valid postcode') {
+			res.render('index.njk', {
+				electedRepresentativeName: 'Error',
+				errorMessage: `ERROR: ${error.message}`
+			});
+		} else {
+			res.render('index.njk', {
+				electedRepresentativeName: 'Error',
+				errorMessage: 'Something really bad went wrong with the server, sorry!',
 		});
+		}
 	}
 });
 

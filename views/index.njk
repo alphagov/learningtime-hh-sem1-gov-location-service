@@ -10,10 +10,11 @@
     <main>
         <form action="/" method="post">
             <label for='postcode'>Enter Postcode:</label>
-            <input name='postcode' placeholder='Type postcode here'></input>
+            <input name='postcode' type='text' placeholder='Type postcode here' pattern='([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})' autofocus required></input>
             <input type='submit' value='Submit'>
         </form>
         <p style='font-style: italic'> Elected representative in that postcode: <span style='font-weight: bold; font-style: normal;'> {{electedRepresentativeName}} </span></p>
+        <p style='color: red; font-weight: bold;'> {{errorMessage}} </p>
     </main>
     <footer>
         <p>&copy; 2023 Government Location Service. All rights reserved.</p>
