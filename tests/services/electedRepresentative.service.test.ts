@@ -48,7 +48,7 @@ describe('getElectedRepresentative test suite', () => {
 		const invalidConstituency = 'France';
 		const response = await getElectedRepresentative(invalidConstituency);
 
-		expect(response).toBe('No elected respresentative returned');
+		expect(response).toBeUndefined();
 
 		expect(spyFetchData).toHaveBeenCalledTimes(1);
 

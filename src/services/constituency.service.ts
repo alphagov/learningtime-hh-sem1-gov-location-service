@@ -10,8 +10,12 @@ export async function getConstituency(postcode: string) {
 		);
 		const constituency = postcodesJson.result.parliamentary_constituency;
 		return constituency;
-	} catch (error) {
-		console.error(`Error: ${error}`);
-		return 'No constituency returned';
+	} catch (error: any) {
+		if (error.response && error.response.status === 404) {
+			console.error(`Error: ${error}`);
+			throw new Error('Postcode was not valid');
+		} else {
+			console.error(`Error: ${error}`);
+		}
 	}
 }
