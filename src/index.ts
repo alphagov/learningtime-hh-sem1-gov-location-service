@@ -3,14 +3,18 @@ import nunjucks from 'nunjucks';
 import bodyParser from 'body-parser';
 import { getConstituency } from './services/constituency.service';
 import { getElectedRepresentative } from './services/electedRepresentative.service';
+import path from 'path'
 
 const app: Express = express();
 const port = 8000;
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(express.static(path.join(__dirname, '/../public')))
+app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')))
+app.use('/govuk', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/')))
 
-nunjucks.configure('views', {
+nunjucks.configure(['views', 'node_modules/govuk-frontend/'], {
 	autoescape: true,
 	express: app,
 });
@@ -18,7 +22,6 @@ nunjucks.configure('views', {
 app.get('/', (req: Request, res: Response) => {
 	res.render('index.njk', { electedRepresentativeName: '', errorMessage: '' });
 });
-
 app.post('/', async (req: Request, res: Response) => {
 	try {
 		const constituency = await getConstituency(req.body.postcode);
