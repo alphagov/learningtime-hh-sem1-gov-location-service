@@ -1,0 +1,38 @@
+{% extends "govuk/template.njk" %}
+{% from "govuk/components/breadcrumbs/macro.njk" import govukBreadcrumbs %}
+{% block head %}
+  <!--[if !IE 8]><!-->
+  <link href="/styles/main.css" rel="stylesheet">
+    <title>Find you local MP</title>
+  <!-- https://stackoverflow.com/questions/41723512/css-not-loading-with-req-params-or-maybe-something-else -->
+  <!--<![endif]-->
+  {# For Internet Explorer 8, you need to compile specific stylesheet #}
+  {# see https://frontend.design-system.service.gov.uk/supporting-ie8/#support-internet-explorer-8 #}
+  <!--[if IE 8]>
+    <link href="/govuk-frontend/all-ie8.css" rel="stylesheet">
+  <![endif]-->
+  {# For older browsers to allow them to recognise HTML5 elements such as `<header>` #}
+  <!--[if lt IE 9]>
+    <script src="/html5-shiv/html5shiv.js"></script>
+  <![endif]-->
+{% endblock %}
+
+
+<div class="govuk-main-">
+{% block content %}
+
+
+  {% block section %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block bodyEnd %}
+  {# Run JavaScript at end of the <body>, to avoid blocking the initial render. #}
+  <script src="
+  all.js"></script>
+  <script>
+    window
+      .GOVUKFrontend
+      .initAll()
+  </script>
+{% endblock %}
