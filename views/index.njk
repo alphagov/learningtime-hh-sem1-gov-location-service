@@ -1,23 +1,29 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Government Location Service</title>
-</head>
+{% extends "layout.njk" %}
+
+{% block content %}
 <body>
-    <header>
-        <h1>Government Location Service</h1>
-    </header>
-    <main>
-        <form action="/" method="post">
-            <label for='postcode'>Enter Postcode:</label>
-            <input name='postcode' type='text' placeholder='Type postcode here' pattern='([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})' autofocus required></input>
-            <input type='submit' value='Submit'>
-        </form>
-        <p style='font-style: italic'> Elected representative in that postcode: <span style='font-weight: bold; font-style: normal;'> {{electedRepresentativeName}} </span></p>
-        <p style='color: red; font-weight: bold;'> {{errorMessage}} </p>
-    </main>
-    <footer>
-        <p>&copy; 2023 Government Location Service. All rights reserved.</p>
-    </footer>
+  <header>
+    <h1 class = "gem-c-title__text govuk-heading-xl">Government Location Service</h1>
+  </header>
+  <main>
+    <p class = "govuk-body">Find your local Member of Parliment</p>
+    <div class="postcode-search-form govuk-!-margin-top-0" data-module="track-submit" data-track-category="postcodeSearch:find_local_council" data-track-action="postcodeSearchStarted" data-track-submit-module-started="true">
+      <form class="location-form govuk-!-margin-bottom-9" action="/" method="post">
+        <fieldset class="govuk-fieldset">
+          <div class="govuk-form-group">
+            <label for="postcode" class="gem-c-label govuk-label">Enter a postcode</label>
+            <div class="gem-c-hint govuk-hint">
+              For example SW1A 2AA
+            </div>
+            <input class="gem-c-input govuk-input" name="postcode" spellcheck="false" type="text" placeholder='Type postcode here' pattern='([Gg][Ii][Rr] 0[Aa]{2})|((([A-Za-z][0-9]{1,2})|(([A-Za-z][A-Ha-hJ-Yj-y][0-9]{1,2})|(([A-Za-z][0-9][A-Za-z])|([A-Za-z][A-Ha-hJ-Yj-y][0-9][A-Za-z]?))))\s?[0-9][A-Za-z]{2})' autofocus required>
+          </div>
+          <button class="gem-c-button govuk-button gem-c-button--bottom-margin" type="submit">Find</button>
+          <p class="govuk-body"><a class="govuk-link" rel="external" href="https://www.royalmail.com/find-a-postcode">Find a postcode on Royal Mail's postcode finder</a></p>
+        </fieldset>
+      </form>
+    </div>
+    <p class ="gem-c-heading govuk-heading-m"> Elected representative in that postcode: <span class ="govuk-body govuk-!-margin-bottom-1"> {{electedRepresentativeName}} </span></p>
+    <p class ="gem-c-heading govuk-heading-m"> {{errorMessage}} </p>
+  </main>
 </body>
-</html>
+{% endblock %}
