@@ -22,10 +22,10 @@
         </fieldset>
       </form>
     </div>
-    <div>
-      <img src= {{thumbnailUrl}} style="display:flex; padding-bottom:40px;" />
+    <div style=" display:flex">
        <p class ="gem-c-heading govuk-heading-m"> Elected representative in that postcode: <span class ="govuk-body govuk-!-margin-bottom-1"> {{electedRepresentativeName}} </span></p>
-    <p class ="gem-c-heading govuk-heading-m"> {{errorMessage}} </p>
+      <p class ="gem-c-heading govuk-heading-m"> {{errorMessage}} </p>
+      <object data= {{thumbnailUrl}} type="image/jpeg" style="padding:20px"></object>
     </div>
   </main>
 </body>
