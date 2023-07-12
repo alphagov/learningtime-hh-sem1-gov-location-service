@@ -22,8 +22,11 @@
         </fieldset>
       </form>
     </div>
-    <p class ="gem-c-heading govuk-heading-m"> Elected representative in that postcode: <span class ="govuk-body govuk-!-margin-bottom-1"> {{electedRepresentativeName}} </span></p>
+    <div>
+      <img src= {{thumbnailUrl}} style="display:flex; padding-bottom:40px;" />
+       <p class ="gem-c-heading govuk-heading-m"> Elected representative in that postcode: <span class ="govuk-body govuk-!-margin-bottom-1"> {{electedRepresentativeName}} </span></p>
     <p class ="gem-c-heading govuk-heading-m"> {{errorMessage}} </p>
+    </div>
   </main>
 </body>
 {% endblock %}

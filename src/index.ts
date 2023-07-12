@@ -11,8 +11,6 @@ const port = 8000;
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(express.static(path.join(__dirname, '/../public')))
-app.use('/assets', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/assets')))
-app.use('/govuk', express.static(path.join(__dirname, '/node_modules/govuk-frontend/govuk/')))
 
 nunjucks.configure(['views', 'node_modules/govuk-frontend/'], {
 	autoescape: true,
@@ -20,16 +18,17 @@ nunjucks.configure(['views', 'node_modules/govuk-frontend/'], {
 });
 
 app.get('/', (req: Request, res: Response) => {
-	res.render('index.njk', { electedRepresentativeName: '', errorMessage: '' });
+	res.render('index.njk', { electedRepresentativeName: '', errorMessage: '' , thumbnailUrl: ''});
 });
 app.post('/', async (req: Request, res: Response) => {
 	try {
 		const constituency = await getConstituency(req.body.postcode);
-		const electedRepresentativeName = await getElectedRepresentative(
+		const electedRepresentativeResponse = await getElectedRepresentative(
 			constituency
 		);
 		res.render('index.njk', {
-			electedRepresentativeName: electedRepresentativeName,
+			electedRepresentativeName: electedRepresentativeResponse?.electedRepresentativeName,
+			thumbnailUrl: electedRepresentativeResponse?.thumbnailUrl
 		});
 	} catch (error: any) {
 		console.error(error);

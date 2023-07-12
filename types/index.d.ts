@@ -11,6 +11,7 @@ export interface MembersApiResponse {
 				member: {
 					value: {
 						nameFullTitle: string;
+						thumbnailUrl: string
 					};
 				};
 			};
