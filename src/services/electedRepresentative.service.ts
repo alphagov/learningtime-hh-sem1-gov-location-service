@@ -14,13 +14,12 @@ export async function getElectedRepresentative(
 		const electedRepresentativeJson: MembersApiResponse = await fetchData(
 			`https://members-api.parliament.uk/api/Location/Constituency/Search?searchText=${constituency}&skip=0&take=20`
 		);
-		console.log(electedRepresentativeJson)
 		const electedRepresentativeName =
 			electedRepresentativeJson.items[0].value.currentRepresentation.member
 				.value.nameFullTitle;
 		const thumbnailUrl = electedRepresentativeJson.items[0].value.currentRepresentation.member.value.thumbnailUrl
 		return { electedRepresentativeName, thumbnailUrl}
-	} catch (error: any) {
+	} catch (error) {
 		console.error(`Error: ${error}`);
 	}
 }

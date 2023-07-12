@@ -1,9 +1,9 @@
 export async function fetchData(query: string) {
 	try {
 		const response = await fetch(query);
-		const json: any = await response.json();
+		const json: unknown = await response.json();
 		return json;
-	} catch (error: any) {
+	} catch (error: unknown) {
 		console.error(`Error: ${error}`);
 	}
 }
