@@ -6,6 +6,7 @@ export const mockElectedRepJson = {
 					member: {
 						value: {
 							nameFullTitle: 'John Smith MP',
+							thumbnailUrl: 'www.aTestMP.gov.uk'
 						},
 					},
 				},
