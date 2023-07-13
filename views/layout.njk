@@ -1,0 +1,27 @@
+{% extends "govuk/template.njk" %}
+{% block pageTitle %}Find your Local MP{% endblock %}
+{% block head %}
+  <head>
+  <link href="/styles/main.css" rel="stylesheet">
+  </head>
+{% endblock %}
+
+
+<div class="govuk-main-">
+{% block content %}
+
+
+  {% block section %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block bodyEnd %}
+  {# Run JavaScript at end of the <body>, to avoid blocking the initial render. #}
+  <script src="
+  all.js"></script>
+  <script>
+    window
+      .GOVUKFrontend
+      .initAll()
+  </script>
+{% endblock %}

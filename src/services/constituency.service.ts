@@ -5,9 +5,9 @@ export async function getConstituency(postcode: string) {
 	const baseURL = 'https://api.postcodes.io/postcodes/';
 	const PostcodeEndpoint = `${baseURL}${postcode}`;
 	try {
-		const postcodesJson: PostcodesApiResponse = await fetchData(
+		const postcodesJson = await fetchData(
 			PostcodeEndpoint
-		);
+		) as PostcodesApiResponse;
 		const constituency = postcodesJson.result.parliamentary_constituency;
 		return constituency;
 	} catch (error: any) {

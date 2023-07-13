@@ -34,8 +34,10 @@ describe('getElectedRepresentative test suite', () => {
 		const electedRepresentativeName =
 			mockElectedRepJson.items[0].value.currentRepresentation.member.value
 				.nameFullTitle;
+		const thumbnailUrl = mockElectedRepJson.items[0].value.currentRepresentation.member.value
+		.thumbnailUrl
 
-		expect(response).toBe(electedRepresentativeName);
+		expect(response).toEqual({ electedRepresentativeName, thumbnailUrl});
 
 		expect(spyFetchData).toHaveBeenCalledTimes(1);
 
